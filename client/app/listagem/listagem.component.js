@@ -14,6 +14,7 @@ var ListagemComponent = (function () {
     function ListagemComponent(service) {
         var _this = this;
         this.fotos = [];
+        this.mensagem = '';
         this.service = service;
         this.service.lista()
             .subscribe(function (fotos) { return _this.fotos = fotos; }, function (erro) { return console.log(erro); });
@@ -25,7 +26,7 @@ var ListagemComponent = (function () {
             var indice = novasFotos.indexOf(foto);
             novasFotos.splice(indice, 1);
             _this.fotos = novasFotos;
-            console.log("Imagem " + foto.titulo + " removida com Sucesso!!!");
+            _this.mensagem = "Imagem " + foto.titulo + " removida com Sucesso!!!";
         }, function (erro) { return console.log(erro); });
     };
     ListagemComponent = __decorate([

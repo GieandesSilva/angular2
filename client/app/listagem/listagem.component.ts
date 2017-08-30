@@ -12,6 +12,7 @@ export class ListagemComponent {
 
     fotos: FotoComponent[] = [];
     service: FotoService;
+    mensagem: string = '';
 
     constructor(service: FotoService) {
 
@@ -34,7 +35,7 @@ export class ListagemComponent {
                 let indice = novasFotos.indexOf(foto);
                 novasFotos.splice(indice, 1);
                 this.fotos = novasFotos;
-                console.log(`Imagem ${foto.titulo} removida com Sucesso!!!`);            
+                this.mensagem = `Imagem ${foto.titulo} removida com Sucesso!!!`;            
             },
             
             erro => console.log(erro)
