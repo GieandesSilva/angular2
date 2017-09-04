@@ -18,6 +18,7 @@ var CadastroComponent = (function () {
     function CadastroComponent(service, fb, route, router) {
         var _this = this;
         this.foto = new foto_component_1.FotoComponent();
+        this.mensagem = '';
         this.service = service;
         this.router = router;
         this.route = route;
@@ -39,10 +40,12 @@ var CadastroComponent = (function () {
         event.preventDefault();
         console.log(this.foto);
         this.service.cadastra(this.foto)
-            .subscribe(function () {
+            .subscribe(function (res) {
+            _this.mensagem = res.mensagem;
             _this.foto = new foto_component_1.FotoComponent();
             console.log('Foto salva com sucesso');
-            _this.router.navigate(['']);
+            if (!res.inclusao)
+                _this.router.navigate(['']);
         }, function (erro) {
             console.log(erro);
         });
